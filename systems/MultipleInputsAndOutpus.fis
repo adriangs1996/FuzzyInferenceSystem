@@ -1,0 +1,35 @@
+x1 0 100 100 : S, M, L
+x2 0 100 100 : S, M, L
+y  0 100 100 : S, M, L
+z  0 100 100 : S, M, L
+
+= S TriangularSet 0 50 25
+= M TriangularSet 25 75 50
+= L TriangularSet 50 100 75
+
+if x1 is S and x2 is M then y is S
+if x1 is S and x2 is M then z is L
+
+if x1 is M and x2 is M then y is M
+if x1 is M and x2 is M then z is M
+
+if x1 is L and x2 is L then y is L
+if x1 is L and x2 is L then z is S
+
+if x1 is S and x2 is M then y is S
+if x1 is S and x2 is M then z is L
+
+if x1 is M and x2 is S then y is S
+if x1 is M and x2 is S then z is L
+
+if x1 is L and x2 is M then y is L
+if x1 is L and x2 is M then z is S
+
+if x1 is M and x2 is L then y is L
+if x1 is M and x2 is L then z is S
+
+if x1 is L and x2 is S then y is M
+if x1 is L and x2 is S then z is M
+
+if x1 is S and x2 is L then y is M
+if x1 is S and x2 is L then z is M

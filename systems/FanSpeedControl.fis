@@ -1,0 +1,25 @@
+Temperature 10 40 100 : Cold, Medium, Hot
+Humidity 20 100 100 : Dry, Normal, Wet
+Speed 0 100 100 : Slow, Moderate, Fast
+
+= Cold TriangularSet 10 25 10
+= Medium TriangularSet 15 35 25
+= Hot TriangularSet 25 40 40
+
+= Dry TriangularSet 60 100 100
+= Wet TriangularSet 20 60 20
+= Normal TrapezoidSet 30 50 70 90
+
+= Slow TriangularSet 0 50 0
+= Moderate TriangularSet 10 90 50
+= Fast TriangularSet 50 100 100
+
+if Temperature is Cold and Humidity is Wet then Speed is Slow
+if Temperature is Cold and Humidity is Normal then Speed is Slow
+if Temperature is Medium and Humidity is Wet then Speed is Slow
+if Temperature is Medium and Humidity is Normal then Speed is Moderate
+if Temperature is Cold and Humidity is Dry then Speed is Moderate
+if Temperature is Hot and Humidity is Wet then Speed is Moderate
+if Temperature is Hot and Humidity is Normal then Speed is Fast
+if Temperature is Hot and Humidity is Dry then Speed is Fast
+if Temperature is Medium and Humidity is Dry then Speed is Fast
