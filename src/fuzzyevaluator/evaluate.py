@@ -23,10 +23,6 @@ def centroid(var: FuzzyVar, firedRules: Dict[FuzzyVar, List[float]]):
     return numerator / denominator
 
 
-def weightedAverage(var: FuzzyVar, firedRules: Dict[FuzzyVar, List[float]]):
-    pass
-
-
 def maxPrinciple(var: FuzzyVar, firedRules):
     return var.domain[np.argmax(firedRules[var])]
 
@@ -56,7 +52,6 @@ def bisector(var: FuzzyVar, firedRules):
 methodTable = {
     "maximum": maxPrinciple,
     "centroid": centroid,
-    "weightedAverage": weightedAverage,
     "mom": meanOfMaximum,
     "bisector": bisector,
 }

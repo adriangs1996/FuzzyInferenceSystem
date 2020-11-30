@@ -24,6 +24,7 @@ class TokenType(Enum):
     Function = 9
     Num = 10
     EqualSign = 11
+    Not = 12
 
 
 class Token(object):
@@ -49,6 +50,7 @@ tokenTable = [
     (r"is", TokenType.Is),
     (r"and", TokenType.And),
     (r"or", TokenType.Or),
+    (r"not", TokenType.Not),
     (r":", TokenType.Colon),
     (r",", TokenType.Comma),
     (r"(TriangularSet)|(TrapezoidSet)", TokenType.Function),
@@ -381,11 +383,15 @@ class Parser:
         right = self._parseStatement()
         return Rule(left, right)
 
-    def _parseStatement(self):
+    def _parseStatement(self, neg=False):
         """
         Fuction that parses the Statement non-Terminal.
         """
         subject = FuzzyVar("")
+        if self.tokens[0].tokenType == TokenType.Not:
+            neg = not neg
+            self._consume(TokenType.Not)
+            return self._parseStatement(neg)
         # First comes an identifier that is a variable
         id_ = self._consume(TokenType.Identifier)
         # Then comens the 'is' keyword
@@ -407,7 +413,7 @@ class Parser:
         ), f"{classification.name} is not part of {subject.name} classifications"
 
         # Construct and return the statement
-        return Statement(subject, classification)
+        return Statement(subject, classification, neg)
 
     def _parseFormula(self, neg=False):
         """
